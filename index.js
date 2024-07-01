@@ -55,6 +55,17 @@ function StopW(hour, min, sec) {
     }, 1000);
 }
 
+function StopWatchTempTesting(hour, min, sec) {
+    StId = setInterval(() => {
+        sec++;
+        document.getElementById("time").innerHTML = (hour < 10 ? "0" + hour : hour) + ":" + (min < 10 ? "0" + min : min) + ":" + (sec < 10 ? "0" + sec : sec);
+        min = min + (sec - (sec % 60)) / 60;
+        sec = sec % 60;
+        hour = hour + (min - (min % 60)) / 60;
+        min = min % 60;
+    }, 1000);
+}
+
 if (document.getElementById("indent").innerText == "WORLD CLOCK") {
     let sec = dateVar.getSeconds() < 10 ? "0" + dateVar.getSeconds() : dateVar.getSeconds();
     let min = dateVar.getMinutes() < 10 ? "0" + dateVar.getMinutes() : dateVar.getMinutes();
